@@ -1,0 +1,47 @@
+body{
+    background-image: url('../images/Library-HD-Background.jpg');
+    object-fit: contain;
+    text-align: center;
+}
+#formId{
+    display: flex;
+    flex-direction: column;
+    width: 17rem;
+    margin: 2rem auto;
+}
+#formId >*{
+    margin: 0.2rem;
+    padding: 0.1rem;
+}
+.titleClass{
+    color:blue;
+    text-align: center;
+}
+.extraTitle{
+    color:gold;
+}
+.tableClass{
+    background-color: brown;
+    color: azure;
+    margin: 2rem auto;
+    border: 1px solid gray;
+}
+.tableClass td,.tableClass th{
+    padding : .3rem;
+    border: 1px solid; 
+}
+.tableClass tr{
+    border: 1px solid white;
+}
+#search{
+    text-decoration: none;
+    border: 1px solid grey;
+    padding: .4rem;
+    margin: .1em;
+    background-color: rgb(93, 56, 56);
+    color:white;
+}
+.booksTitle,.usersTitle{
+    color:white;
+    margin: .1em auto;
+}

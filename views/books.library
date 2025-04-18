@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#title#</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles/styles.css" />   
+    <script defer src="/scripts/test.js"></script>
+    <script defer src="/scripts/books.mjs"></script>
+  </head>
+  <body>
+    <nav>
+        <a href="/library">Library</a>
+        <a href="/lib/booksView">Books</a>
+        <a href="/lib/usersView">Users</a>
+    </nav>
+    
+    <div id="app">
+      <div class="booksTitle" >#content#</div>      
+      <div class="content"></div>
+    </div>
+  </body>
+</html>

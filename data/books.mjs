@@ -1,53 +1,53 @@
 const books = [{
     id: 1,
-    name: "Hungry Caterpillar"
+    title: "Hungry Caterpillar"
 },{
     id:2,
-    name:"Old Lady Swallowed a Bug"
+    title:"Old Lady Swallowed a Bug"
 },
 {
     id:3,
-    name:"Lamma Lamma Red Pyjama"
+    title:"Lamma Lamma Red Pyjama"
 },
 {
     id:4,
-    name:"Let Us C"
+    title:"Let Us C"
 },
 {
     id:5,
-    name:"Java"
+    title:"Java"
 },
 {
     id:6,
-    name:"React"
+    title:"React"
 },
 {
     id:7,
-    name:"Express"
+    title:"Express"
 },
 {
     id:8,
-    name:"Node JS"
+    title:"Node JS"
 },
 {
     id:9,
-    name:"Full Stack"
+    title:"Full Stack"
 },
 {
     id:10,
-    name:"Cyber Security"
+    title:"Cyber Security"
 },
 {
     id:11,
-    name:"IT support"
+    title:"IT support"
 },
 {
     id:12,
-    name:"Activate Works"
+    title:"Activate Works"
 },
 {
     id:13,
-    name:"Per Scholas"
+    title:"Per Scholas"
 }
 ]
 

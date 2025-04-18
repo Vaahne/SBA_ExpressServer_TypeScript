@@ -1,36 +1,38 @@
 const users = [{
     id: 1,
-    name: "Ganesha"
+    userName: "Ganesha"
 },
 {
     id: 2,
-    name: "Saraswathi"
+    userName: "Saraswathi"
 },
 {
     id: 3,
-    name: "Shiva"
+    userName: "Shiva"
 },
 {
     id: 4,
-    name: "Parvathi"
+    userName: "Parvathi"
 },
 {
     id: 5,
-    name: "Hanuman"
+    userName: "Hanuman"
 },
 {
     id: 6,
-    name: "Laxman"
+    userName: "Laxman"
 },
 {
     id: 7,
-    name: "Durga"
+    userName: "Durga"
 },
 {
     id: 8,
-    name: "Poleramma"
+    userName: "Poleramma"
 },
 {
     id: 9,
-    name: "Krishna"
+    userName: "Krishna"
 }];
+
+export default users;

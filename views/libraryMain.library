@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#title#</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles/styles.css" />    
+  </head>
+  <body>
+    <nav>
+        <a href="/library">Library</a>
+        <a href="/lib/booksView">Books</a>
+        <a href="/lib/users">Users</a>
+    </nav>
+    <h1 class="titleClass">#title#</h1>
+    <div id="app">
+      
+    </div>
+  </body>
+</html>
