@@ -17,7 +17,7 @@ function renderContentUser(){ // render content on click of users link
                     <option value="update">Update User</option>
                 </select>
                 <input type="text" placeholder="Enter User Id" id="searchInput">
-                <a href="/lib/search/user" id="search" >Search</a>
+                <button id="search" type="submit">Search</button>
             </form>`;
 }
 

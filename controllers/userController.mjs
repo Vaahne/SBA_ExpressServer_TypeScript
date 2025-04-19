@@ -5,10 +5,10 @@ function allUsers(req,res){
 }
 
 function specificUser(req,res,next){
-    const userId = req.params.id;
-    const {id} = req.query;
+    const id = req.params.id;
+    const {userId} = req.query;
     
-    const user = users.find((b)=> b.id == userId);
+    const user = users.find((b)=> b.userId == id);
     if(user)
         return res.json(user);
     return res.json("User not Found !!")
@@ -16,8 +16,8 @@ function specificUser(req,res,next){
 
 function addUser(req,res){
     if(req.body && req.body.userName){
-        const id = users[users.length-1].id + 1;
-        const user = {id : id, userName : req.body.userName};
+        const id = users[users.length-1].userId + 1;
+        const user = {userId : id, userName : req.body.userName};
         users.push(user);    
         return res.json(user);
     }    
@@ -28,7 +28,7 @@ function updateUser(req,res){
     const userId = req.params.id;
 
     const user = users.find((b,i)=> {
-         if(b.id == userId){
+         if(b.userId == userId){
            users[i].userName = req.body.userName;
            return true;
         }
@@ -43,7 +43,7 @@ function deleteUser(req,res){
     const userId = req.params.id;
     
     for(let u in users){
-        if(users[u].id == userId){
+        if(users[u].userId == userId){
             const user = users[u];
             users.splice(u,1);
             return res.json(user);

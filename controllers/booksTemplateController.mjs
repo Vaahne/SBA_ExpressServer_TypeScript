@@ -1,5 +1,3 @@
-
-
 function booksTemplate(req,res){
     let options = {
         title: "Library Books",
@@ -19,7 +17,7 @@ function renderContentForBooks(){   // content on clicking of Book link in the n
                     <option value="update">Update Book</option>
                 </select>
                 <input type="text" placeholder="Enter Book Id" id="searchInput">
-                <a href="/lib/search" id="search" >Search</a>
+                <button  id="search" type="submit" >Search</button>
             </form>`;
 }
 

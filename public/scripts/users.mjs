@@ -182,7 +182,7 @@ function createTable(data){
     data.forEach(element => {
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
-        td1.textContent = element.id;
+        td1.textContent = element.userId;
         const td2 = document.createElement("td");
         td2.textContent = element.userName;
 
