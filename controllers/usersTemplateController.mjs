@@ -10,6 +10,7 @@ function userTemplate(req,res){
 function renderContentUser(){ // render content on click of users link
     return `<h1>User Operations</h1>   <form id="formId" > 
                 <select id="userOptions" >
+                    <option selected >Select</option>
                     <option value="get">Get All Users</option>
                     <option value="post">Add a User</option>
                     <option value="delete">Delete Users</option>

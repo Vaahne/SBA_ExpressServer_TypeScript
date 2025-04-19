@@ -36,27 +36,29 @@ async function optionsFunction(e){
         case 'get': 
                     fetch('/lib/books').then(async(res) => {
                         const data = await res.json();
-                        // console.log(data);
                         createTable(data);
 
                     }).catch(err =>{
                         console.log(err.message);
                     });
                     break;
-        case 'post':  addBook();
+        case 'post': addBook();
+                    break;
+        case 'delete':  deleteOrUpdateBook("Delete");
                      break;
-        case 'delete': deleteBook();
+        case 'update': deleteOrUpdateBook("Update");
                     break;
     }
 }
-function deleteBook(){
+function deleteOrUpdateBook(option){
     const form = document.createElement("form");
+    form.id = "formId";
     const bookId = document.createElement("input");
     bookId.type ="text";
     bookId.placeholder = "Enter the Book Id";
     const add = document.createElement("input");
     add.type="submit";
-    add.value="Delete Book";
+    add.value=`${option} Book`;
     form.appendChild(bookId);
     form.appendChild(add);
 
@@ -66,24 +68,70 @@ function deleteBook(){
     form.addEventListener('submit',async(e)=>{
         e.preventDefault();
         const id = bookId.value;
-        if(id){            
+        if(id == ""){
+            alert("Id cannot be empty");
+            return;
+        }
+        if(option == "Delete"){ 
             const book = await fetch(`/lib/books/${id}`,{
                 method: "DELETE" ,
                 headers: {"content-type":"application/json"},
              });
-            //  book = await book.json();
-             console.log(`Deleted book ${book}`)
-             alert("Successfully Deleted a Book");
              bookId.value = "";
+            let  data = await book.json();
+            if(typeof data == 'string')
+                alert("Book not found!!")
+            else
+                 alert("Successfully Deleted a Book");
              return;
-        }
-        alert("Book Id cannot be empty");
+        }if(option == 'Update')
+            update(id);
     });
-
 }
+
+async function update(id){
+    const book = await fetch(`/lib/books/${id}`);
+    const bookData = await book.json();
+    if(typeof bookData == 'string')
+        alert("No Book found!!!");
+    else{
+        const form = document.createElement("form");
+        form.id = "formId";
+        const booktitle = document.createElement("input");
+        booktitle.type = "text";
+        booktitle.value = bookData.title;
+        const update = document.createElement("input");
+        update.type="submit";
+        update.value = "Update";
+
+        form.appendChild(booktitle);
+        form.appendChild(update);
+        content.textContent = "";
+        content.appendChild(form);
+
+        form.addEventListener('submit',async (e)=>{
+            e.preventDefault();
+            let val = booktitle.value;
+            if(val==""){
+                alert("Title cannot be empty");
+                return;
+            }
+
+            const rawData = JSON.stringify({title: val});
+            const user = await fetch(`/lib/books/${id}`,{
+                 method: "PATCH" ,
+                headers: {"content-type":"application/json"},
+                body: rawData
+            });      
+            alert("Successfully updated!!");
+        });
+    }
+}
+
 
 function addBook(){
     const form = document.createElement("form");
+    form.id = "formId";
     const bookTitle = document.createElement("input");
     bookTitle.type ="text";
     bookTitle.placeholder = "Enter the Book Title";

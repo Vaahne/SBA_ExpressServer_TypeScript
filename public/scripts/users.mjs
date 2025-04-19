@@ -54,6 +54,7 @@ async function optionsFunction(e){
 
 function deleteOrUpdateUser(option){
     const form = document.createElement("form");
+    form.id = "formId";
     const userId = document.createElement("input");
     userId.type ="text";
     userId.placeholder = "Enter the User Id";
@@ -69,23 +70,70 @@ function deleteOrUpdateUser(option){
     form.addEventListener('submit',async(e)=>{
         e.preventDefault();
         const id = userId.value;
-        if(id){            
+        if(id == ""){
+            alert("User Id cannot be empty");
+            return;
+        }
+        if(option == "Delete"){
             const user = await fetch(`/lib/users/${id}`,{
                 method: option.toUpperCase() ,
                 headers: {"content-type":"application/json"},
-             });
-            //  book = await book.json();
-             console.log(`Deleted user ${user}`)
-             alert(`Successful User ${option} `);
-             userId.value = "";
-             return;
-        }
-        alert("User Id cannot be empty");
+            });
+            
+            userId.value = "";
+            let data = await user.json();
+            if(typeof data == 'string')
+                alert("No user found!!!");
+            else
+                alert(`Successful User ${option} `);
+            return;
+        }if(option == "Update")
+            update(id);        
     });
+}
+
+async function update(id){
+    const user = await fetch(`/lib/users/${id}`);
+    const userData = await user.json();
+    if(typeof userData == 'string')
+        alert("No User found!!!");
+    else{
+        const form = document.createElement("form");
+        form.id = "formId";
+        const username = document.createElement("input");
+        username.type = "text";
+        username.value = userData.userName;
+        const update = document.createElement("input");
+        update.type="submit";
+        update.value = "Update";
+
+        form.appendChild(username);
+        form.appendChild(update);
+        content.textContent = "";
+        content.appendChild(form);
+
+        form.addEventListener('submit',async (e)=>{
+            e.preventDefault();
+            let val = username.value;
+            if(val==""){
+                alert("Name cannot be empty");
+                return;
+            }
+
+            const rawData = JSON.stringify({userName: val});
+            const user = await fetch(`/lib/users/${id}`,{
+                 method: "PATCH" ,
+                headers: {"content-type":"application/json"},
+                body: rawData
+            });      
+            alert("Successfully updated!!");
+        });
+    }
 }
 
 function addUser(){
     const form = document.createElement("form");
+    form.id = "formId";
     const userName = document.createElement("input");
     userName.type ="text";
     userName.placeholder = "Enter the User Name";
