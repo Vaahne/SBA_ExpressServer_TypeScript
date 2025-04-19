@@ -3,10 +3,10 @@ import usersController from '../controllers/userController.mjs';
 
 const router = express.Router();
 
-router.get('/',usersController.allUsers)
+router.route('/').get(usersController.allUsers)
+                 .post(usersController.addUser);
 
 router.route('/:id').get(usersController.specificUser)
-                          .post(usersController.addUser)
                           .patch(usersController.updateUser)
                           .delete(usersController.deleteUser);
 

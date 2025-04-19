@@ -3,10 +3,10 @@ import booksController from '../controllers/booksController.mjs';
 
 const router = express.Router();
 
-router.get('/',booksController.allbooks);
+router.route('/').get(booksController.allbooks)
+                .post(booksController.addBook);
 
 router.route('/:id').get(booksController.specificBook)
-                    .post(booksController.addBook)
                     .patch(booksController.updateBook)
                     .delete(booksController.deleteBook);
 export default router;
