@@ -1,5 +1,6 @@
 import express from 'express';
 import transactionController from '../controllers/transactionController.mjs';
+import validateType from '../middleware/validateTransaction.mjs';
 
 const router = express.Router();
 
@@ -7,7 +8,7 @@ router.route('/').get(transactionController.allTransactions)
                   .post(transactionController.borrowOrReturn);
 
 router.route('/:id').get(transactionController.searchTransaction)
-                    .patch(transactionController.borrowOrReturn);                  
+                    .patch(validateType,transactionController.borrowOrReturn);                  
 
 export default router;
 

@@ -11,8 +11,8 @@ function borrowOrReturn(req,res){
     if(!transaction_id)
         return res.status(400).json(`Empty Transaction id`);
 
-    if(!reqType || !['borrow','return'].includes(reqType))
-        return res.status(404).json("Invalid type, it can be either borrow or return");
+    // if(!reqType || !['borrow','return'].includes(reqType))
+    //     return res.status(404).json("Invalid type, it can be either borrow or return");
 
     const transaction = transactions.find((t)=> t.transaction_id == transaction_id);
 
