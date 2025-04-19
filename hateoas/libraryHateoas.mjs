@@ -83,4 +83,22 @@ function userHateoas(req,res){
         ]
     });
 }
+
+
+function transactionHateoas(){
+    return res.json({
+       links: [
+        {
+            href: "/lib/transactions",
+            rel : "transactions",
+            type: "GET"
+        },
+        {
+            href: "/lib/transactions/:id",
+            rel : "transactions",
+            type: "GET"
+        }
+        ]
+    })
+}
 export default { libraryHateoas,booksHateoas,userHateoas};

@@ -17,7 +17,7 @@ function specificBook(req,res,next){
         if(book)
             return res.json(book);
     }
-    return res.json("Book not Found in the library");
+    return res.status(404).json("Book not Found in the library");
 }
 
 function addBook(req,res){
