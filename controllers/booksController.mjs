@@ -1,17 +1,22 @@
 import books from '../data/books.mjs';
 
+// returns all books or specific book based on query parameter
 function allbooks(req,res){
-    return res.json(books);
-}
+    const {bookId} = req.query; // using query parameter by bookId
 
-function specificBook(req,res,next){
-    const id = req.params.id;
-    const {bookId}  = req.query;
-    if(bookId ){
-        const book = books.find((b)=> b.bookId == bookId);
+    if(bookId){
+        const book = books.find((b) => b.bookId == bookId);
         if(book)
             return res.json(book);
-    }
+        return res.send(404).json(`Book not found!!!!`);
+    } 
+
+    return res.json(books);
+}
+// Returns/gets specific book based on bookId (:id)
+function specificBook(req,res,next){
+    const id = req.params.id;
+    
     if(id){
         const book = books.find((b)=> b.bookId == id);
         if(book)
@@ -19,7 +24,7 @@ function specificBook(req,res,next){
     }
     return res.status(404).json("Book not Found in the library");
 }
-
+// adds a book to the books
 function addBook(req,res){
     if(req.body && req.body.title){
         const id = books[books.length-1].bookId + 1;
@@ -29,9 +34,8 @@ function addBook(req,res){
     }
     return res.json(`Insufficient Data`);
 }
-
+// deletes a book based on the bookId
 function deleteBook(req,res){
-    
     const bookId = req.params.id;
     
     for(let b in books){
@@ -43,7 +47,7 @@ function deleteBook(req,res){
     }
     return res.json("Book Not Found");   
 }
-
+//  updates a book title based in bookid
 function updateBook(req,res){
     const bookId = req.params.id;
 

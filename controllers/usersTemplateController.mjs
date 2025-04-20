@@ -1,3 +1,4 @@
+// renders title , content to the users view template
 function userTemplate(req,res){
     let options = {
         title: "Library Users",
@@ -7,7 +8,8 @@ function userTemplate(req,res){
     res.render("users",options);  //users.library view
 }
 
-function renderContentUser(){ // render content on click of users link
+// content to be displayed on the click of user on nav bar
+function renderContentUser(){ 
     return `<h1>User Operations</h1>   <form id="formId" > 
                 <select id="userOptions" >
                     <option selected >Select</option>

@@ -1,3 +1,4 @@
+// basic links to be displayed for library
 function libraryHateoas(req, res){
     return res.json({
         links : [
@@ -24,7 +25,7 @@ function libraryHateoas(req, res){
         ]
     });
 }
-
+//  links for books
 function booksHateoas(req,res){
     return res.json({
         links: [
@@ -56,7 +57,7 @@ function booksHateoas(req,res){
         ]
     });
 }
-
+// links for users
 function userHateoas(req,res){
     return res.json({
         links: [
@@ -84,7 +85,7 @@ function userHateoas(req,res){
     });
 }
 
-
+// links for transactions
 function transactionHateoas(){
     return res.json({
        links: [
@@ -101,4 +102,4 @@ function transactionHateoas(){
         ]
     })
 }
-export default { libraryHateoas,booksHateoas,userHateoas};
+export default { libraryHateoas,booksHateoas,userHateoas,transactionHateoas};

@@ -1,18 +1,24 @@
 import transactions from "../data/transactions.mjs";
 
+// returns or gets all transactions
 function allTransactions(req,res){
+    const {transaction_id} =req.query;
+    
+    if(transaction_id){
+        const transaction = transactions.find((t)=> t.transaction_id == transaction_id);
+        if(transaction)
+            return res.json(transaction);
+        return res.status(404).json("Transaction not found");
+    }
     return res.json(transactions);
 }
-
+// updates/patches a transaction based on the transaction_Id
 function borrowOrReturn(req,res){
     const transaction_id = req.params.id;
     const reqType = req.body.type;
 
     if(!transaction_id)
         return res.status(400).json(`Empty Transaction id`);
-
-    // if(!reqType || !['borrow','return'].includes(reqType))
-    //     return res.status(404).json("Invalid type, it can be either borrow or return");
 
     const transaction = transactions.find((t)=> t.transaction_id == transaction_id);
 
@@ -30,8 +36,10 @@ function borrowOrReturn(req,res){
     });
 }
 
+// gets a transaction by transaction_id
 function searchTransaction(req,res){
     const transaction_id = req.params.id;
+
     if(!transaction_id)
         return res.status(400).json(`Empty Transaction id`);
 
