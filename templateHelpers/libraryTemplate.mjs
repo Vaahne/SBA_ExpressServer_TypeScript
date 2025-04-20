@@ -1,9 +1,4 @@
 import fs from 'fs';
-// import path from 'path';
-// import { fileURLToPath } from 'url';
-
-// const _filePath = fileURLToPath(import.meta.url);
-// const _dir = path.dirname(_filePath);
 
 function callBackFunc(filePath,option,callBack){
     fs.readFile(filePath,(err,content)=>{
