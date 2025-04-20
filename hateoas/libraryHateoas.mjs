@@ -86,7 +86,7 @@ function userHateoas(req,res){
 }
 
 // links for transactions
-function transactionHateoas(){
+function transactionHateoas(req,res){
     return res.json({
        links: [
         {

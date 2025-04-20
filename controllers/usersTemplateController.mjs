@@ -10,8 +10,7 @@ function userTemplate(req,res){
     const formPath = path.join(process.cwd(),'views','formTemplate.library');
     let formContent = fs.readFileSync(formPath,'utf8');
     
-    formContent = formContent.replaceAll("#type#","User");
-    
+    formContent = formContent.replaceAll("#type#","User");    
 
     let options = {
         title: "Library Users",
