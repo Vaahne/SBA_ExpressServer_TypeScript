@@ -3,7 +3,7 @@ import users from '../data/users.mjs';
 // gets all users
 function allUsers(req,res){
     const {userId} = req.query;
-    
+    console.log("Hello ",userId);
     if(userId){
         const user = users.find((b)=> b.userId == userId);
         if(user)
@@ -28,7 +28,9 @@ function specificUser(req,res,next){
 
 // adds a user to the data
 function addUser(req,res){
+    console.log("add user start",req.body.userName);
     if(req.body && req.body.userName){
+        console.log("add user start inside if");
         const id = users[users.length-1].userId + 1;
         const user = {userId : id, userName : req.body.userName};
         users.push(user);    

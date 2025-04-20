@@ -3,6 +3,7 @@ function validateUsername(req,res,next){
     if(!userName || userName == "" || typeof userName != 'string'){
         res.send(400).json(`Invalid or empty username!! `);
     }
+    next();
 }
 
 export default validateUsername;

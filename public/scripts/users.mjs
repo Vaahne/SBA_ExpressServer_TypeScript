@@ -10,7 +10,7 @@ formId.addEventListener('submit',async (e)=>{
     e.preventDefault();
     const val = searchInput.value;
     if(val!= ""){
-        let res = await fetch(`/lib/users/${val}`);
+        let res = await fetch(`/lib/users/${val}`); 
         const data = await res.json();
         console.log(`${data}`)
         if(typeof data != "string"){
@@ -152,11 +152,13 @@ function addUser(){
             const rawBody = JSON.stringify({
                 "userName": name
             });
+            console.log("Before fetch post");
             const user = await fetch('/lib/users',{
                 method: "POST" ,
                 headers: {"content-type":"application/json"},
                 body: rawBody
              });
+             console.log("after fetch post");
              console.log(`Added User ${user}`)
              alert("Successfully Added a User");
              userName.value = "";
