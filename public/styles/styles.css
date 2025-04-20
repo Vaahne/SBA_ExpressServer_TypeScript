@@ -2,6 +2,24 @@ body{
     background-image: url('../images/Library-HD-Background.jpg');
     object-fit: contain;
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+nav >*{
+    color: #e6c1c1;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.8rem;
+}
+a:hover{
+    color:blue;
+}
+a.active{
+    color: yellow;
 }
 #formId{
     display: flex;
@@ -14,7 +32,7 @@ body{
     padding: 0.1rem;
 }
 .titleClass{
-    color:blue;
+    color:white;
     text-align: center;
 }
 .extraTitle{

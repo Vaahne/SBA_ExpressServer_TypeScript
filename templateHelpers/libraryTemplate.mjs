@@ -1,11 +1,9 @@
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// import path from 'path';
+// import { fileURLToPath } from 'url';
 
-
-const _filePath = fileURLToPath(import.meta.url);
-const _dir = path.dirname(_filePath);
-
+// const _filePath = fileURLToPath(import.meta.url);
+// const _dir = path.dirname(_filePath);
 
 function callBackFunc(filePath,option,callBack){
     fs.readFile(filePath,(err,content)=>{
@@ -23,7 +21,7 @@ function callBackFunc(filePath,option,callBack){
         return callBack(null,render);
     })
 }
-
+// to render library template
 function library(req,res){
     let options = {
         title: "Library Management System",
@@ -33,13 +31,4 @@ function library(req,res){
     res.render('libraryMain',options);
 }
 
-function books(req,res){
-    let options = {
-        title: "Library Management System",
-        content: "Library Management System",
-        page: "home"
-    }
-    res.render('books',options);
-}
-
-export default {callBackFunc,library,books};
+export default {callBackFunc,library};

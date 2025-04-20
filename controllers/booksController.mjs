@@ -7,7 +7,7 @@ function allbooks(req,res){
     if(bookId){
         const book = books.find((b) => b.bookId == bookId);
         if(book)
-            return res.json(book);
+            return res.status(200).json(book);
         return res.send(404).json(`Book not found!!!!`);
     } 
 
@@ -20,7 +20,7 @@ function specificBook(req,res,next){
     if(id){
         const book = books.find((b)=> b.bookId == id);
         if(book)
-            return res.json(book);
+            return res.status(200).json(book);
     }
     return res.status(404).json("Book not Found in the library");
 }
@@ -30,7 +30,7 @@ function addBook(req,res){
         const id = books[books.length-1].bookId + 1;
         const book = {bookId : id, title : req.body.title};
         books.push(book);
-        return res.json(book);
+        return res.status(201).json(book);
     }
     return res.json(`Insufficient Data`);
 }
@@ -42,7 +42,7 @@ function deleteBook(req,res){
         if(books[b].bookId == bookId){
             const book = books[b];
             books.splice(b,1);
-            return res.json(book);
+            return res.status(200).json(book);
         }
     }
     return res.json("Book Not Found");   
@@ -58,7 +58,7 @@ function updateBook(req,res){
         }
     });
     if(book)
-        return res.json(book);
+        return res.status(200).json(book);
     return res.json(`Book not found`);
 }
 

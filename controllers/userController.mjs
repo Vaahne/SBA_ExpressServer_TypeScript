@@ -7,7 +7,7 @@ function allUsers(req,res){
     if(userId){
         const user = users.find((b)=> b.userId == userId);
         if(user)
-            return res.json(user);
+            return res.status(200).json(user);
         return res.status(404).json(`User not found`);
     } 
     res.json(users);
@@ -20,7 +20,7 @@ function specificUser(req,res,next){
     if(id){
         const user = users.find((b)=> b.userId == id);
         if(user)
-            return res.json(user);
+            return res.status(200).json(user);
         return res.status(404).json(`User not found`);
     }
     return res.json("User not Found !!")
@@ -32,7 +32,7 @@ function addUser(req,res){
         const id = users[users.length-1].userId + 1;
         const user = {userId : id, userName : req.body.userName};
         users.push(user);    
-        return res.json(user);
+        return res.status(201).json(user);
     }    
     return res.json("User Not Found");   
 }
@@ -48,7 +48,7 @@ function updateUser(req,res){
     });
 
     if(user)
-        return res.json(user);
+        return res.status(200).json(user);
     return res.json(`User not found`);
 }
 // delete user by userid
@@ -59,7 +59,7 @@ function deleteUser(req,res){
         if(users[u].userId == userId){
             const user = users[u];
             users.splice(u,1);
-            return res.json(user);
+            return res.status(200).json(user);
         }
     }
     return res.json("User Not Found");   

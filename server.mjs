@@ -5,7 +5,7 @@ import transactionRouter from "./routers/transactionRouter.mjs"
 import library from "./routers/libraryTemplateRouter.mjs";
 import hateoas from "./hateoas/libraryHateoas.mjs";
 import error from  "./utilities/error.mjs";
-import template from "./templateHelpers/basicTemplate.mjs";
+import template from "./templateHelpers/libraryTemplate.mjs";
 
 const app = express();
 const PORT = 3000 || 3001;

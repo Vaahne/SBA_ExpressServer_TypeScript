@@ -8,11 +8,10 @@ function booksTemplate(req,res){
     res.render("books",options); // books.library view
 }
 
-
 // content to be rendered on click of the books from the nav bar
 function renderContentForBooks(){   // content on clicking of Book link in the nav
     return `<h1>Book Operations</h1>   <form id="formId" > 
-                <select id="bookOptions" >
+                <select id="Options" >
                     <option selected>Select </option>
                     <option value="get">Get All books</option>
                     <option value="post">Add a Book</option>

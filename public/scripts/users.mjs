@@ -1,10 +1,11 @@
 const title = document.querySelector(".titleClass");
 const content = document.querySelector(".content");
-const userOptions = document.getElementById("userOptions");
+const userOptions = document.getElementById("Options");
 const search = document.getElementById("search");
 const searchInput = document.getElementById("searchInput");
 const formId = document.getElementById("formId");
 
+// on search of userId 
 formId.addEventListener('submit',async (e)=>{
     e.preventDefault();
     const val = searchInput.value;
@@ -25,15 +26,13 @@ formId.addEventListener('submit',async (e)=>{
     }
 });
 
-
-
 userOptions.addEventListener('change',optionsFunction);
-
+// on change of options drop down
 async function optionsFunction(e){
     const selectedOption = e.target.value;
 
     switch(selectedOption){
-        case 'get': 
+        case 'get':  // to get specific user 
                     fetch('/lib/users').then(async(res) => {
                         const data = await res.json();
                         // console.log(data);
@@ -43,15 +42,15 @@ async function optionsFunction(e){
                         console.log(err.message);
                     });
                     break;
-        case 'post':  addUser();
+        case 'post':  addUser(); //to add new user to data
                     break;
-        case 'delete' : deleteOrUpdateUser("Delete");
+        case 'delete' : deleteOrUpdateUser("Delete"); //delete a user by userId
                     break;
-        case 'update': deleteOrUpdateUser("Update");
+        case 'update': deleteOrUpdateUser("Update"); //update username by userId
                     break;
     }
 }
-
+// delete or update starting point of accepting userId
 function deleteOrUpdateUser(option){
     const form = document.createElement("form");
     form.id = "formId";
@@ -91,7 +90,7 @@ function deleteOrUpdateUser(option){
             update(id);        
     });
 }
-
+// allowing user to edit username and update
 async function update(id){
     const user = await fetch(`/lib/users/${id}`);
     const userData = await user.json();
@@ -130,7 +129,7 @@ async function update(id){
         });
     }
 }
-
+// adding a new user to the data
 function addUser(){
     const form = document.createElement("form");
     form.id = "formId";
@@ -166,6 +165,7 @@ function addUser(){
         alert("User name cannot be empty");
     });
 }
+// table to display all users 
 function createTable(data){
     const table = document.createElement("table");
     table.classList.add("tableClass");

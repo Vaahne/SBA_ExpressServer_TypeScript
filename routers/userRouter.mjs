@@ -8,7 +8,7 @@ router.route('/').get(usersController.allUsers)
                  .post(validateUserName,usersController.addUser);
 
 router.route('/:id').get(usersController.specificUser)
-                          .patch(usersController.updateUser)
-                          .delete(usersController.deleteUser);
+                    .patch(usersController.updateUser)
+                    .delete(usersController.deleteUser);
 
 export default router;

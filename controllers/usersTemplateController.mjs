@@ -11,7 +11,7 @@ function userTemplate(req,res){
 // content to be displayed on the click of user on nav bar
 function renderContentUser(){ 
     return `<h1>User Operations</h1>   <form id="formId" > 
-                <select id="userOptions" >
+                <select id="Options" >
                     <option selected >Select</option>
                     <option value="get">Get All Users</option>
                     <option value="post">Add a User</option>

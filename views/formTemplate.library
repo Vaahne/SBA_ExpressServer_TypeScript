@@ -1,0 +1,12 @@
+<h1>#type# Operations</h1>   
+<form id="formId" > 
+    <select id="Options" >
+        <option selected>Select </option>
+        <option value="get">Get All #type#s</option>
+        <option value="post">Add a #type#</option>
+        <option value="delete">Delete #type#s</option>
+        <option value="update">Update #type#</option>
+    </select>
+    <input type="text" placeholder="Enter #type# Id" id="searchInput">
+    <button  id="search" type="submit" >Search</button>
+</form>

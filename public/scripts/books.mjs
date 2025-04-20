@@ -1,11 +1,11 @@
 const title = document.querySelector(".titleClass");
 const content = document.querySelector(".content");
-const bookOptions = document.getElementById("bookOptions");
+const bookOptions = document.getElementById("Options");
 const search = document.getElementById("search");
 const searchInput = document.getElementById("searchInput");
 const formId = document.getElementById("formId");
 
-// on search
+// on search for a bookId
 formId.addEventListener('submit',async (e)=>{
     e.preventDefault();
     const val = searchInput.value;
@@ -28,12 +28,12 @@ formId.addEventListener('submit',async (e)=>{
 
 
 bookOptions.addEventListener('change',optionsFunction);
-
+// on change of options dropdown
 async function optionsFunction(e){
     const selectedOption = e.target.value;
 
     switch(selectedOption){
-        case 'get': 
+        case 'get':  // to get the specific book
                     fetch('/lib/books').then(async(res) => {
                         const data = await res.json();
                         createTable(data);
@@ -42,15 +42,16 @@ async function optionsFunction(e){
                         console.log(err.message);
                     });
                     break;
-        case 'post': addBook();
+        case 'post': addBook(); // for creating a book entry
                     break;
-        case 'delete':  deleteOrUpdateBook("Delete");
+        case 'delete':  deleteOrUpdateBook("Delete"); // delete a book
                      break;
-        case 'update': deleteOrUpdateBook("Update");
+        case 'update': deleteOrUpdateBook("Update"); // updating a book
                     break;
     }
 }
-function deleteOrUpdateBook(option){
+// basic view for update and delete to accept bookId
+function deleteOrUpdateBook(option){  
     const form = document.createElement("form");
     form.id = "formId";
     const bookId = document.createElement("input");
@@ -88,7 +89,7 @@ function deleteOrUpdateBook(option){
             update(id);
     });
 }
-
+// next step of update to allow user to edit book title
 async function update(id){
     const book = await fetch(`/lib/books/${id}`);
     const bookData = await book.json();
@@ -128,7 +129,7 @@ async function update(id){
     }
 }
 
-
+// create or post for new book
 function addBook(){
     const form = document.createElement("form");
     form.id = "formId";
@@ -164,7 +165,7 @@ function addBook(){
         alert("Book title cannot be empty");
     });
 }
-
+// displaying all books in a table 
 function createTable(data){
     const table = document.createElement("table");
     table.classList.add("tableClass");
