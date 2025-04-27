@@ -35,5 +35,11 @@
 ## To Run
  npm i
  npm start
-# Visit 
- http://localhost:3000/library
+## build and run
+ make sure tsconfig.json, package.json abd nodemon.json are as it is in the project
+# Compile the project
+    npm run build
+# run 
+    npm ts-node ./src/server.ts
+# using dev
+ npm run dev
